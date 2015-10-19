@@ -1,2 +1,2 @@
 # RPG-FANTASY-UPDATED
-#AS LEADER Y'ALL BETTER UPDATE VERSION NUMBERS AS WE GO ALONG..
+Most recent version as of 10/18/2015 11:44PM is version 1.2 fixing screen tilting.

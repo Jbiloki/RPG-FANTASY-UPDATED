@@ -98,6 +98,7 @@ public class EnemyArcher : MonoBehaviour
 
         if (this.EnemyHealth <= 0)
         {
+            gameObject.layer = LayerMask.NameToLayer("other");
             // Since the player is dead, remove the corpse
             animatorObject.SetBool("Dies", true);
             StartCoroutine(this.DestroyAfter(2));
@@ -161,4 +162,12 @@ public class EnemyArcher : MonoBehaviour
         }
         
     }
+   /* public void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.gameObject.name == "player")
+        {
+            this.gameObject.tag == "Other";
+        }
+    }*/
+
 }

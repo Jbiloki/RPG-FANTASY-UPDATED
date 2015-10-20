@@ -95,7 +95,7 @@ public class EnemyArcher : MonoBehaviour
             // Show the hurt animation
             TriggerAction("TriggerHurt");
         }
-        if(damage >= 20)
+        if (damage >= 20)
         {
             StartCoroutine(this.Wait(0.5f));
             TriggerAction("TriggerHurt");
@@ -107,6 +107,8 @@ public class EnemyArcher : MonoBehaviour
             // Since the player is dead, remove the corpse
             animatorObject.SetBool("Dies", true);
             StartCoroutine(this.DestroyAfter(2));
+            SpriteCharacterController player = GameObject.FindObjectOfType<SpriteCharacterController>();
+            player.gainExp(20);
         }
     }
 

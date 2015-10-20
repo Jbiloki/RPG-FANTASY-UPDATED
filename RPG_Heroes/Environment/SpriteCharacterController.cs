@@ -13,6 +13,8 @@ public class SpriteCharacterController : MonoBehaviour
     [Header("Character")]
     public Transform GroundChecker;
     public LayerMask GroundLayer;
+    public float experience = 0.0f;
+    public float level = 0.0f;
     public float WalkSpeed = 30;
     public float JumpPower = 100;
     public int MaxHealth = 100;
@@ -31,6 +33,12 @@ public class SpriteCharacterController : MonoBehaviour
     public GameObject EnemyArcher;
     public double maxDistance = .1938712;
     public float distance;
+    public float lnextAttack = 0.0f;
+    public float mnextAttack = 0.0f;
+    public float snextAttack = 0.0f;
+    public float lAttackRate = .5f;
+    public float mAttackRate = 3.0f;
+    public float sAttackRate = 10.0f;
     private Animator animatorObject;
     private Rigidbody2D body;
     private bool isGrounded = true;
@@ -81,6 +89,7 @@ public class SpriteCharacterController : MonoBehaviour
 
     void Update()
     {
+
         // Check for keyboard input for the different actions
         // Nut only when we are on the ground
         if (this.isGrounded && !this.IsDead)
@@ -90,8 +99,9 @@ public class SpriteCharacterController : MonoBehaviour
                 this.animatorObject.SetTrigger("TriggerJump");
                 this.body.AddForce(new Vector2(0, this.JumpPower));
             }
-            else if (Input.GetKeyDown(KeyCode.J))
+            else if (Input.GetKeyDown(KeyCode.J) && Time.time > lnextAttack)
             {
+                lnextAttack = Time.time + lAttackRate;
                 this.TriggerAction("TriggerQuickAttack");
                 distance = Vector2.Distance(GameObject.FindWithTag("Enemy").transform.position, GameObject.FindWithTag("Player").transform.position);
                 if (distance < .1938712 && currentDirection == Direction.Right)
@@ -99,25 +109,30 @@ public class SpriteCharacterController : MonoBehaviour
                     EnemyDamage(true, 10);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.K))
+            else if (Input.GetKeyDown(KeyCode.K) && Time.time > mnextAttack)
             {
+                mnextAttack = Time.time + mAttackRate;
                 this.TriggerAction("TriggerAttack");
+                distance = Vector2.Distance(GameObject.FindWithTag("Enemy").transform.position, GameObject.FindWithTag("Player").transform.position);
+                if (distance < .23 && currentDirection == Direction.Right)
+                {
+                    EnemyDamage(true, 20);
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.L))
+            else if (Input.GetKeyDown(KeyCode.L) && Time.time > snextAttack)
             {
-                
+                snextAttack = Time.time + sAttackRate;
                 this.TriggerAction("TriggerCast");
+                distance = Vector2.Distance(GameObject.FindWithTag("Enemy").transform.position, GameObject.FindWithTag("Player").transform.position);
+                if (distance < .3)
+                {
+                    EnemyDamage(true, 50);
+                }
               
             }
             else if (Input.GetKeyDown(KeyCode.H))
             {
-                print("Entered");
-                distance = Vector2.Distance(GameObject.FindWithTag("Enemy").transform.position, GameObject.FindWithTag("Player").transform.position);
-                if (distance < .3 && currentDirection == Direction.Right)
-                {
-                    EnemyDamage(true, 50);
-                    print("Hit");
-                }
+                
                 this.ApplyDamage(10);
             }
         }
@@ -216,5 +231,19 @@ public class SpriteCharacterController : MonoBehaviour
         EnemyArcher archer = GameObject.FindObjectOfType<EnemyArcher>();
         archer.ApplyDamage(damage);
     }
+    private IEnumerator Wait(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+    }
+    public void gainExp(float enemyExperience)
+    {
+        EnemyArcher archer = GameObject.FindObjectOfType<EnemyArcher>();
+        if (archer.IsDead == true)
+        {
+            this.experience += enemyExperience;
+        }
+    }
+  
     
 }

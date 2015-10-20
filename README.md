@@ -1,5 +1,5 @@
 # RPG-FANTASY-UPDATED
-//Developers
+##Developers
 C# developer and lead : Jacob Biloki
 C# developer and art contributions : Lanvi Nguyen
 C# developer : Jon Mai
@@ -16,7 +16,7 @@ Most recent version as of 10/19/2015 7:43PM is version 1.2.1
 >>Knight lighting strike now is an AOE around his position
 
 
->>>TO DO AND OTHER INFO:
+##TO DO AND OTHER INFO:
 *Figure out basis of game
 *Learn more about Unity
 *Learn more about C#

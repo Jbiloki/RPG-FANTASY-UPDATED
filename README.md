@@ -1,6 +1,6 @@
 # RPG-FANTASY-UPDATED
 
-##Developers
+###Developers
 
 C# developer and lead : Jacob Biloki
 
@@ -10,13 +10,13 @@ C# developer : Jon Mai
 
 C# developer and art contributions : Tiffany Lin
 
-## Version Information
+### Version Information
 
 Most recent version as of 10/19/2015 7:43PM is version 1.2.1
 
 1.2.1 can be found under branch 1.2
 
-##IMPLEMENTED DURING 1.2.1
+####IMPLEMENTED DURING 1.2.1
 
 >Leveling system implemented
 >>Bare bones with experience given upon enemy death
@@ -28,7 +28,7 @@ Most recent version as of 10/19/2015 7:43PM is version 1.2.1
 >>Knight lighting strike now is an AOE around his position
 
 
-##TO DO AND OTHER INFO:
+#######TO DO AND OTHER INFO:
 
 * Figure out basis of game
 

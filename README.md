@@ -4,7 +4,9 @@ C# developer and lead : Jacob Biloki
 C# developer and art contributions : Lanvi Nguyen
 C# developer : Jon Mai
 C# developer and art contributions : Tiffany Lin
-Most recent version as of 10/19/2015 7:43PM is version 1.2.1
+
+## Version Information
+Most recent version as of 10/19/2015 7:43PM is version 1.2.1'\n'
 1.2.1 can be found under branch 1.2
 
 ##IMPLEMENTED DURING 1.2.1
